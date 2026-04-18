@@ -10,27 +10,10 @@ fun main() {
     )
 
 
-    fun filterLogs(logs: List<LogEntry>, condition: (LogEntry) -> Boolean): List<LogEntry> {
-        val matchingList = mutableListOf<LogEntry>()
-        for (element in logs) {
-            if (condition(element)) {
-                matchingList.add(element)
-            }
-        }
-       return matchingList
-     }
-
-    fun createReport(matchingList: List<LogEntry>): String {
-       val report = StringBuilder("${config.header}\n")
-        for (element in matchingList) {
-            report.append("[${element.level}] ${element.message}\n")
-        }
-        return report.toString()
-    }
 
 
 
-    val report = createReport(filterLogs(testLogs) { it.level == config.filter})
+    val report = LogService.filterLogs(testLogs) { it.level == Config.filter}
 
 
     print(report)
