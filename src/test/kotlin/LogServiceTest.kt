@@ -35,4 +35,40 @@ class LogServiceTest {
         assertEquals("Berichtanfang:\n", report)
     }
 
+    @Test
+    fun `sortLogsByTimestamp should order logs chronologically`() {
+        // 1. Arrange (Daten vorbereiten)
+        val data = listOf(
+            LogEntry("INFO", "Alles ok", 34),
+            LogEntry("INFO", "Fehler!", 17),
+            LogEntry("INFO", "Fehler!", 1),
+            LogEntry("INFO", "Fehler!", 12)
+        )
+
+        // 2. Act (Die Funktion aufrufen)
+        val result = LogService.sortLogsByTimestamp(data)
+
+
+        // 3. Assert (Prüfen: Erwarten wir 1 Ergebnis?)
+        assertEquals(1, result[0].timestamp)
+    }
+
+    @Test
+    fun `searchLogs should return data with keyword`() {
+        // 1. Arrange (Daten vorbereiten)
+        val data = listOf(
+            LogEntry("INFO", "Alles ok", 34),
+            LogEntry("INFO", "Fehler!", 17),
+            LogEntry("INFO", "Fehler!", 1),
+            LogEntry("INFO", "Fehler!", 12)
+        )
+
+        // 2. Act (Die Funktion aufrufen)
+        val result = LogService.searchLogs(data,"Fehler!")
+
+
+        // 3. Assert (Prüfen: Erwarten wir 1 Ergebnis?)
+        assertEquals(3, result.size)
+    }
+
 }

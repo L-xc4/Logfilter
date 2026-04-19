@@ -48,4 +48,16 @@ object LogService {
         val sortedLogs = logs.sortedBy { it.timestamp }
         return sortedLogs
     }
+
+    fun searchLogs(logs: List<LogEntry>, keyword: String): List<LogEntry> {
+        val matchingList = mutableListOf<LogEntry>()
+        for (element in logs) {
+            val searchableElement = element.toString()
+
+            if (searchableElement.contains(keyword)) {
+                matchingList.add(element)
+            }
+        }
+        return matchingList
+    }
 }
