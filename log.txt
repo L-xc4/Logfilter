@@ -1,0 +1,8 @@
+INFO;System erfolgreich gestartet;1712345600000
+ERROR;Datenbankverbindung fehlgeschlagen;1712345660000
+INFO;Benutzer 'Admin' hat sich eingeloggt;1712345720000
+ERROR;Speicherlimit erreicht;1712345780000
+WARN;Latenz der API ist zu hoch;1712345840000
+ERROR;Unerwarteter Null-Pointer in Modul B;1712345900000
+INFO;Backup-Job gestartet;1712346000000
+ERROR;Timeout beim API-Aufruf;1712346100000

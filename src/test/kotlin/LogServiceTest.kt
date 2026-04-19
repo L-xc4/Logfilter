@@ -23,7 +23,7 @@ class LogServiceTest {
     fun `filterLogs should return empty string with no  matching data`() {
         // 1. Arrange (Daten vorbereiten)
         val data = listOf(
-            LogEntry("INF", "Alles ok", 1L),
+            LogEntry("INFO", "Alles ok", 1L),
             LogEntry("INFO", "Fehler!", 2L)
         )
 
