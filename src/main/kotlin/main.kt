@@ -1,8 +1,10 @@
 fun main(args: Array<String>) {
 
-    val testLogs = LogService.loadLogsFromFile(args.getOrNull(0) ?: "log.txt")
+    val source: LogSource = FileLogSource(args.getOrNull(0) ?: "log.txt")
 
-    val sortedLogs = LogService.sortLogsByTimestamp(testLogs)
+    val allLogs = source.load()
+
+    val sortedLogs = LogService.sortLogsByTimestamp(allLogs)
 
 
     val filteredLog = LogService.filterLogs(sortedLogs) { it.level == Config.filter}
