@@ -42,4 +42,5 @@ object LogService {
 
             LogEntry(level, message, timestamp)
         }
+    }
 }
