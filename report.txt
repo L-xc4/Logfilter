@@ -1,0 +1,5 @@
+Berichtanfang:
+[ERROR] - 1712345660000: Datenbankverbindung fehlgeschlagen
+[ERROR] - 1712345780000: Speicherlimit erreicht
+[ERROR] - 1712345900000: Unerwarteter Null-Pointer in Modul B
+[ERROR] - 1712346100000: Timeout beim API-Aufruf

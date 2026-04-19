@@ -50,15 +50,8 @@ object LogService {
     }
 
     fun searchLogs(logs: List<LogEntry>, keyword: String): List<LogEntry> {
-        val matchingList = mutableListOf<LogEntry>()
-        for (element in logs) {
-            val searchableElement = element.toString()
 
-            if (searchableElement.contains(keyword)) {
-                matchingList.add(element)
-            }
-        }
-        return matchingList
+        return logs.filter{ it.toString().contains(keyword, ignoreCase = true)}
     }
 
     fun saveReportToFile(report: String, filePath: String) {
