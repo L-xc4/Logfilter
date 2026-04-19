@@ -31,7 +31,7 @@ class LogServiceTest {
         val result = LogService.filterLogs(data) { it.level == "ERROR" }
 
         // 3. Assert (Prüfen: Erwarten wir 1 Ergebnis?)
-        assertEquals(0, result.length)
+        assertEquals("Berichtanfang:\n", result)
     }
 
 }

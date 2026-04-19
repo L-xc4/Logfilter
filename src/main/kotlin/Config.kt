@@ -1,4 +1,4 @@
 object Config {
     val header = "Berichtanfang:"
-    val filter = "ERROR"
+    val filter = "A"
 }
