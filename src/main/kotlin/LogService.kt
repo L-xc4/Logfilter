@@ -1,16 +1,16 @@
 object LogService {
 
-    fun filterLogs(logs: List<LogEntry>, condition: (LogEntry) -> Boolean): String {
+    fun filterLogs(logs: List<LogEntry>, condition: (LogEntry) -> Boolean): List<LogEntry> {
         val matchingList = mutableListOf<LogEntry>()
         for (element in logs) {
             if (condition(element)) {
                 matchingList.add(element)
             }
         }
-        val report = createReport(matchingList)
-       return report
+        return matchingList
     }
 
+    // Diese Funktion macht NUR den Bericht-Job
     fun createReport(matchingList: List<LogEntry>): String {
         val report = StringBuilder("${Config.header}\n")
         for (element in matchingList) {
@@ -18,5 +18,4 @@ object LogService {
         }
         return report.toString()
     }
-
 }

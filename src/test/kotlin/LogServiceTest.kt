@@ -16,7 +16,7 @@ class LogServiceTest {
         val result = LogService.filterLogs(data) { it.level == "ERROR" }
 
         // 3. Assert (Prüfen: Erwarten wir 1 Ergebnis?)
-        assertEquals(36, result.length)
+        assertEquals(1, result.size)
     }
 
     @Test
@@ -29,9 +29,10 @@ class LogServiceTest {
 
         // 2. Act (Die Funktion aufrufen)
         val result = LogService.filterLogs(data) { it.level == "ERROR" }
+        val report = LogService.createReport(result)
 
         // 3. Assert (Prüfen: Erwarten wir 1 Ergebnis?)
-        assertEquals("Berichtanfang:\n", result)
+        assertEquals("Berichtanfang:\n", report)
     }
 
 }

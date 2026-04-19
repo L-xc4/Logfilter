@@ -13,8 +13,8 @@ fun main() {
 
 
 
-    val report = LogService.filterLogs(testLogs) { it.level == Config.filter}
-
+    val filteredLog = LogService.filterLogs(testLogs) { it.level == Config.filter}
+    val report = LogService.createReport(filteredLog)
 
     print(report)
 
