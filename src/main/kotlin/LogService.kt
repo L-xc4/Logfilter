@@ -60,4 +60,12 @@ object LogService {
         }
         return matchingList
     }
+
+    fun saveReportToFile(report: String, filePath: String) {
+        try {
+            File(filePath).writeText(report)
+        } catch (e: Exception) {
+            println("Keine Schreibrechte im Ordner")
+        }
+    }
 }
