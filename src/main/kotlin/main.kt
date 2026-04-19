@@ -1,11 +1,11 @@
 fun main() {
 
-    val testLogs = LogService.loadLogsFromFile("C:\\Users\\lpasc\\IdeaProjects\\Logfilter\\log.txt")
+    val testLogs = LogService.loadLogsFromFile("log.txt")
+
+    val sorteLogs = LogService.sortLogsByTimestamp(testLogs)
 
 
-
-
-    val filteredLog = LogService.filterLogs(testLogs) { it.level == Config.filter}
+    val filteredLog = LogService.filterLogs(sorteLogs) { it.level == Config.filter}
     val report = LogService.createReport(filteredLog)
 
     print(report)

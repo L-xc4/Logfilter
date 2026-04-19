@@ -43,4 +43,9 @@ object LogService {
             LogEntry(level, message, timestamp)
         }
     }
+
+    fun sortLogsByTimestamp(logs: List<LogEntry>): List<LogEntry> {
+        val sortedLogs = logs.sortedBy { it.timestamp }
+        return sortedLogs
+    }
 }
