@@ -21,18 +21,25 @@ object LogService {
         return report.toString()
     }
 
-    fun loadLogsFromFile(path: String): List<LogEntry> {
-
-        var testLogs = mutableListOf<LogEntry>()
-
-        val file = File(path)
-        val lines = file.readLines()
-
-        for (line in lines) {
-            val log = line.split(";")
-            testLogs.add(LogEntry(log[0],log[1],log[2].toLong()))
+    fun loadLogsFromFile(filePath: String): List<LogEntry> {
+        val file = File(filePath)
+        if (!file.exists()) {
+            println("Fehler: Datei $filePath nicht gefunden!")
+            return emptyList()
         }
 
-        return testLogs
-    }
+        return file.readLines().mapNotNull { line ->
+            val parts = line.split(";")
+
+            // Fehlerfall 1: Zeile hat nicht genug Teile (Level;Nachricht;Zeitstempel)
+            if (parts.size < 3) return@mapNotNull null
+
+            val level = parts[0]
+            val message = parts[1]
+
+            // Fehlerfall 2: Zeitstempel ist keine gültige Zahl
+            val timestamp = parts[2].toLongOrNull() ?: return@mapNotNull null
+
+            LogEntry(level, message, timestamp)
+        }
 }
